@@ -132,19 +132,22 @@ public class Program
     static List<Phone> RegisterPhone()
     {
         List<Phone> phones = new();
-
         bool addAnother = true;
 
         do
         {
-            
             string number;
             Console.Write("\nInforme o número de telefone: ");
             number = Console.ReadLine();
             Phone newPhone = new Phone(number);
             phones.Add(newPhone);
 
-            Console.Clear();
+            Console.WriteLine("Números de telefone registrados:");
+            foreach (Phone phone in phones)
+            {
+                Console.WriteLine(phone.phone);
+            }
+
             Console.WriteLine("\nDeseja cadastrar outro número de telefone?");
             Console.WriteLine("|1| - SIM");
             Console.WriteLine("|2| - NÃO");
@@ -153,23 +156,13 @@ public class Program
 
             if (option != 1)
             {
-                
                 addAnother = false;
-                
             }
-            
-        } while (addAnother);
-        
+
+        } while (addAnother == true);
 
         return phones;
     }
-
-
-
-
-
-
-
 
 
 }

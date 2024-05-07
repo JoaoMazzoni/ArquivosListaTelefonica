@@ -23,11 +23,12 @@ namespace AgendaTelefone
             contactString += $"\nRua: {address.street}, {address.number}\nBairro{address.neighborhood}\nCidade: {address.city}\nCEP: {address.postcode}\n";
             contactString += "\nTelefones:\n";
 
-            foreach (var phone in phones)
+            foreach (Phone phone in phones)
             {
                 contactString += $"\nNúmero: {phone.phone}\n";
             }
             return contactString;
         }
+
     }
 }
