@@ -29,7 +29,6 @@ public class Program
                     Console.Clear();
                     Console.WriteLine("---- Registrar Contato ----");
                     contactList.Add(RegisterContact());
-                    contactList.Sort();
 
                     break;
 
@@ -44,6 +43,7 @@ public class Program
 
                 case 3:
                     // Adicionar a lógica para editar contato, se necessário
+
                     break;
 
                 case 4:
@@ -62,10 +62,29 @@ public class Program
                             }
                             Console.ReadLine();
                             break;
-
+                           
                         case 2:
                             //Imprimir contato especifico.
+                            Console.Write("Informe o nome do contato: ");
+                            string namePrint = Console.ReadLine();
+                            var auxFind = contactList.FindAll(contact => contact.name == namePrint); //Guarda em uma lista auxiliar o contato encontrado
+
+                            if (auxFind.Count > 0)
+                            {
+                                Console.WriteLine("Contatos encontrados:");
+                                foreach (var contact in auxFind) //Imprime cada contato que foi guardado na lista auxFind
+                                {
+                                    Console.WriteLine(contact.ToString());
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nenhum contato encontrado com o nome especificado.");
+                            }
+
+                            Console.ReadLine();
                             break;
+
 
                         default:
                             Console.Clear();
@@ -142,22 +161,27 @@ public class Program
             Phone newPhone = new Phone(number);
             phones.Add(newPhone);
 
-            Console.WriteLine("Números de telefone registrados:");
+            Console.WriteLine("\nNúmeros de telefone registrados:");
             foreach (Phone phone in phones)
             {
                 Console.WriteLine(phone.phone);
             }
+            Console.Write("\nPressione qualquer tecla para continuar: ");
+            Console.ReadLine();
+            Console.Clear();
 
             Console.WriteLine("\nDeseja cadastrar outro número de telefone?");
             Console.WriteLine("|1| - SIM");
-            Console.WriteLine("|2| - NÃO");
-            Console.Write("\nDigite sua resposta: ");
+            Console.WriteLine("|2| - NÃO\n");
+            Console.Write("Digite sua resposta: ");
             int option = int.Parse(Console.ReadLine());
+            
 
             if (option != 1)
             {
                 addAnother = false;
             }
+            Console.Clear();
 
         } while (addAnother == true);
 
