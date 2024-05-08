@@ -8,7 +8,7 @@ public class Program
 {
     internal static void Main(string[] args)
     {
-       List<Contact> contactList = new List<Contact>();    
+        List<Contact> contactList = new List<Contact>();    
         int opc;
 
         do
@@ -64,7 +64,7 @@ public class Program
                             break;
 
                         case 2:
-                            
+                            //Imprimir contato especifico.
                             break;
 
                         default:
@@ -75,7 +75,7 @@ public class Program
                     break;
 
                 case 5:
-                    Environment.Exit(0);
+                    Environment.Exit(0); //Sair do programa
                     break;
 
                 default:
@@ -98,9 +98,9 @@ public class Program
 
         Address address = RegisterAddress();
 
-        RegisterPhone();
+        List<Phone> aux = RegisterPhone();
 
-        return new Contact(name, email, address, RegisterPhone());
+        return new Contact(name, email, address, aux);
     }
 
     static Address RegisterAddress()
